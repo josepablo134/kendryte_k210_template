@@ -1,0 +1,5 @@
+if (WIN32)
+    include(${CMAKE_CURRENT_LIST_DIR}/win-toolchain.cmake)
+else ()
+    include(${CMAKE_CURRENT_LIST_DIR}/linux-toolchain.cmake)
+endif ()
