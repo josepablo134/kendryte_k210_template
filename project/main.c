@@ -16,5 +16,5 @@ int main(void)
     {
         retVal = main_h1();
     }
-    return 0;
+    return retVal;
 }

@@ -17,6 +17,9 @@
         "string.h": "c",
         "stdint.h": "c",
         "stddef.h": "c",
-        "syscall.h": "c"
+        "syscall.h": "c",
+        "io.h": "c",
+        "gpiohs.h": "c",
+        "fpioa.h": "c"
     }
 }
