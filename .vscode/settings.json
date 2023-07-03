@@ -1,0 +1,22 @@
+{
+    "C_Cpp.default.compilerPath": "c:\\Program Files (x86)\\Arm GNU Toolchain arm-none-eabi\\12.2 mpacbti-rel1\\bin\\arm-none-eabi-gcc.exe",
+    "files.associations": {
+        "*.arxml": "xml",
+        "bsp.h": "c",
+        "atomic.h": "c",
+        "entry.h": "c",
+        "sysctl.h": "c",
+        "threads.h": "c",
+        "harts.h": "c",
+        "printf.h": "c",
+        "encoding.h": "c",
+        "platform.h": "c",
+        "syscalls.h": "c",
+        "sleep.h": "c",
+        "stdlib.h": "c",
+        "string.h": "c",
+        "stdint.h": "c",
+        "stddef.h": "c",
+        "syscall.h": "c"
+    }
+}

@@ -1,0 +1,71 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "build",
+			"type": "shell",
+			"windows": {
+				"options": {
+					"shell": {
+						"executable": "powershell.exe"
+					}
+				},
+				"command": "ninja"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"options": {
+				// This is necessary since tasks.ps1 assumes execution from .vscode folder
+				// And the workspace assumes .vscode is inside work folder 
+				"cwd": "${workspaceFolder}/build/"
+			},
+			"problemMatcher": []
+		},{
+			"label": "clean_build",
+			"type": "shell",
+			"windows": {
+				"options": {
+					"shell": {
+						"executable": "powershell.exe"
+					}
+				},
+				"command": "ninja clean; ninja"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			},
+			"options": {
+				// This is necessary since tasks.ps1 assumes execution from .vscode folder
+				// And the workspace assumes .vscode is inside work folder
+				"cwd": "${workspaceFolder}/build/"
+			},
+			"problemMatcher": []	
+		},{
+			"label": "cmake_init",
+			"type": "shell",
+			"windows": {
+				"options": {
+					"shell": {
+						"executable": "powershell.exe"
+					}
+				},
+				"command": "mkdir build;cd build;cmake ../project -GNinja"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			},
+			"options": {
+				// This is necessary since tasks.ps1 assumes execution from .vscode folder
+				// And the workspace assumes .vscode is inside work folder
+				"cwd": "${workspaceFolder}/"
+			},
+			"problemMatcher": []	
+		}
+	]
+}

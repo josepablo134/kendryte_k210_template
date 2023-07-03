@@ -32,8 +32,10 @@ include( ${WORK_DIR}/cmake/project.cmake)
 add_executable( ${EXEC_NAME} ${WORK_DIR}/main.c )
 
 add_subdirectory( ${WORK_DIR}/BSP )
+add_subdirectory( ${WORK_DIR}/Harts )
 
 target_link_libraries( ${EXEC_NAME}
+		Harts
         -Wl,--start-group
         gcc m c
         -Wl,--whole-archive
@@ -76,6 +78,15 @@ add_custom_command(
 		TARGET ${EXEC_NAME} POST_BUILD
 		COMMAND
 				${CMAKE_OBJCOPY} -O ihex ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${EXEC_NAME}${CMAKE_EXECUTABLE_SUFFIX} ${OUTPUT_HEX}
+		DEPENDS 
+			${EXEC_NAME}
+)
+
+# Generate Bin file
+add_custom_command(
+		TARGET ${EXEC_NAME} POST_BUILD
+		COMMAND
+				${CMAKE_OBJCOPY} --output-format=binary ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${EXEC_NAME}${CMAKE_EXECUTABLE_SUFFIX} ${OUTPUT_BIN}
 		DEPENDS 
 			${EXEC_NAME}
 )

@@ -64,7 +64,7 @@ int __attribute__((weak)) os_entry(int core_id, int number_of_cores, int (*user_
 
 void _init_bsp(int core_id, int number_of_cores)
 {
-    extern int main(int argc, char* argv[]);
+    extern int main( void );
     extern void __libc_init_array(void);
     extern void __libc_fini_array(void);
 
@@ -88,25 +88,16 @@ void _init_bsp(int core_id, int number_of_cores)
         plic_init();
         /* Enable global interrupt */
         sysctl_enable_irq();
-    }
 
-    int ret = 0;
-    if (core_id == 0)
-    {
-        core1_instance.callback = NULL;
-        core1_instance.ctx = NULL;
-        ret = os_entry(core_id, number_of_cores, main);
-    }
-    else
-    {
+        sysctl_pll_set_freq(SYSCTL_PLL0, 800000000);
+    }else{
         plic_init();
         sysctl_enable_irq();
-        thread_entry(core_id);
-        if(core1_instance.callback == NULL)
-            asm volatile ("wfi");
-        else
-            ret = core1_instance.callback(core1_instance.ctx);
+        /*Halt Core 1*/
+        while (!atomic_read(&g_wake_up[core_id]));
     }
+
+    int ret = main();
     exit(ret);
 }
 
