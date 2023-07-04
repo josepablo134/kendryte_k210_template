@@ -46,6 +46,28 @@
 			},
 			"problemMatcher": []	
 		},{
+			"label": "kflash",
+			"type": "shell",
+			"windows": {
+				"options": {
+					"shell": {
+						"executable": "powershell.exe"
+					}
+				},
+				//pip install kflash; Add your python/scripts folder to the path.
+				"command": "py -m kflash -p COM7 -b 1500000 -B goE ./template.bin"
+			},
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			},
+			"options": {
+				// This is necessary since tasks.ps1 assumes execution from .vscode folder
+				// And the workspace assumes .vscode is inside work folder
+				"cwd": "${workspaceFolder}/build/bin"
+			},
+			"problemMatcher": []	
+		},{
 			"label": "cmake_init",
 			"type": "shell",
 			"windows": {
