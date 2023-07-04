@@ -4,7 +4,7 @@
 ################################################################################
 cmake_minimum_required( VERSION 3.18.4 )
 
-project( microMiddlewares
+project( kendrytebsp
 		DESCRIPTION "Kendryte K210 BSP and drivers"
 		VERSION 1.0.0
 		LANGUAGES C ASM
